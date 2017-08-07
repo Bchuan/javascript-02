@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.box{
+				margin: 100px auto;
+				width: 650px;
+				height: 250px;
+				position: relative;
+				overflow: hidden;
+				background: #00A0E9;
+			}
+			.box ul{
+				position: relative;
+				z-index: 1;
+			}
+			.box ul li{
+				position: absolute;
+			}
+			.box ul li:nth-child(1){
+				z-index: 1;
+			}
+			.box ol{
+				position: absolute;
+				bottom: 10px;
+				z-index: 2;
+				display: flex;
+				right: 30px;
+			}
+			.box ol li{
+				height: 20px;
+				width: 20px;
+				color: white;
+				text-align: center;
+				background: #A9A9A9;
+			}
+			.box ol li+li{
+				margin-left: 10px;
+			}
+			.box ol li.cur{
+				background: #000000;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li><img src="img/01.jpg"/></li>
+				<li><img src="img/02.jpg"/></li>
+				<li><img src="img/03.jpg"/></li>
+				<li><img src="img/04.jpg"/></li>
+				<li><img src="img/05.jpg"/></li>
+			</ul>
+			<ol>
+				<li class="cur">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+			</ol>
+		</div>
+	</body>
+	<script src="node_modules/jquery/dist/jquery.js"></script>
+	<script type="text/javascript">
+		var z=1;
+		var i=0;
+		$(".box ol li").mouseenter(function(){
+			var index=$(this).index();
+			if(index==i) return;
+			i=index;
+			$(this).addClass("cur").siblings().removeClass("cur")
+			z++;
+			$(".box ul li").eq(index).css({
+				left:650+"px",
+				zIndex:z
+			})
+							.stop().animate({left:0},800)
+		})
+	</script>
+</html>

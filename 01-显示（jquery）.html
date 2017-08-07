@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				height: 400px;
+				width: 500px;
+				background: #8A2BE2;
+				display: none ;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="show" />
+		<input type="button" value="hide" />
+		<input type="button" value="slideDown" />
+		<input type="button" value="slideUp" />
+		<input type="button" value="slideToggle" />
+		<input type="button" value="fadeIn" />
+		<input type="button" value="fadeOut" />
+		<input type="button" value="fadeTo" />
+		
+		<div class="box">
+			
+		</div>
+	</body>
+	<script src="node_modules/jquery/dist/jquery.js"></script>
+	<script type="text/javascript">
+//		console.log(12)
+		$("input").eq(0).click(function(){
+			console.log($(".box"))
+			$(".box").show(2000);//显示
+		})
+		$("input").eq(1).click(function(){
+			console.log($(".box"))
+			$(".box").hide(2000);//隐藏
+		})
+		$("input").eq(2).click(function(){
+			console.log($(".box"))
+			$(".box").slideDown(2000);//下拉
+		})
+		$("input").eq(3).click(function(){
+			console.log($(".box"))
+			$(".box").slideUp(2000);//上拉
+		})
+		$("input").eq(4).click(function(){
+			console.log($(".box"))
+			$(".box").slideToggle(2000);//上拉/下拉切换
+		})
+		$("input").eq(5).click(function(){
+			console.log($(".box"))
+			$(".box").fadeIn(2000);//淡入
+		})
+		$("input").eq(6).click(function(){
+			console.log($(".box"))
+			$(".box").fadeOut(2000);//淡出
+		})
+		$("input").eq(7).click(function(){
+			console.log($(".box"))
+			$(".box").fadeTo(2000,0.1);//淡入
+		})
+	</script>
+</html>

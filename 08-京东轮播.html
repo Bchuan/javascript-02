@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.box{
+				margin: 100px auto;
+				width: 650px;
+				height: 250px;
+				position: relative;
+			}
+			.box ul{
+				position: relative;
+				z-index: 1;
+			}
+			.box ul li{
+				position: absolute;
+			}
+			.box ol{
+				position: absolute;
+				bottom: 10px;
+				left: 50%;
+				z-index: 2;
+				display: flex;
+			}
+			.box ol li{
+				height: 15px;
+				width: 15px;
+				background: #A9A9A9;
+				border-radius: 50%;
+				margin-left: -55px;
+			}
+			.box ol li+li{
+				margin-left: 15px;
+			}
+			.box ol li.cur{
+				background: red;
+			}
+			.box span{
+				position: absolute;
+				z-index: 2;
+				top: 50%;
+				height: 40px;
+				width: 80px;
+				line-height: 40px;
+				text-align: center;
+				border-radius:10px ;
+				background: rgba(255,255,255,0.5);
+				margin-top:-20px ;
+				color: white;
+			}
+			.box .btn1{
+				left: 0;
+			}
+			.box .btn2{
+				left: 570px;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li><img src="img/01.jpg"/></li>
+				<li><img src="img/02.jpg"/></li>
+				<li><img src="img/03.jpg"/></li>
+				<li><img src="img/04.jpg"/></li>
+				<li><img src="img/05.jpg"/></li>
+			</ul>
+			<!--<ol>
+				<li class="cur"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ol>-->
+			<span class="btn1">上一张</span>
+			<span class="btn2">下一张</span>
+			
+		</div>
+	</body>
+	<script src="node_modules/jquery/dist/jquery.js"></script>
+	<script type="text/javascript">
+		var key=0;
+		var timer=null;
+		var $ul=$("ul");
+		var $aul=$("ul li");
+		
+		$ul.after("<ol></ol>");
+		var $ol=$("ol")
+		$aul.each(function(){
+			$ol.append("<li></li>")
+			$(this).stop().fadeOut(300)
+		})
+		$("ul li").eq(0).stop().fadeIn(300);
+		
+		$("ol li").eq(0).addClass("cur")
+		
+		$("ol li").each(function(index,ele){
+			console.log(ele)
+			$(ele).mouseover(function(){
+				key=$(this).index();
+				console.log(key)
+				bing(key);
+			})
+		})
+		autoplay();
+		function autoplay(){
+			clearInterval(timer)
+			timer=setInterval(function(){
+				key=++key%$aul.length;
+				bing(key);
+			},2000)
+		}
+		
+		$(".box").mouseover(function(){
+			clearInterval(timer);
+		})
+		
+		$(".box").mouseout(function(){
+			autoplay()
+		})
+		
+		function bing(index){
+			$("ol li").eq(index).addClass("cur").siblings().removeClass("cur");
+			$("ul li").stop().fadeOut(300)
+				  .eq(index).stop().fadeIn(300);
+		}
+		
+		//下一张
+		$("span").each(function(index,ele){
+			$(ele).click(function(){
+				var i=$(this).index;
+				if(i==0)
+				{
+					key=++key%$aul.length;
+				}
+				else{
+					key--;
+					key=key>=0?key:$aul.length-1;
+				}
+				bing(key)
+			})
+		})
+	</script>
+</html>

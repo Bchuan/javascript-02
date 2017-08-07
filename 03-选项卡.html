@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				text-align: center;
+				line-height: 50px;
+			}
+			.box{
+				width: 500px;
+				height: auto;
+				margin: 100px auto;
+			}
+			.box .nav{
+				display: flex;
+				background: #00A0E9;
+			}
+			.box .nav li{
+				height: 50px;
+				width: 100px;
+			}
+			.box .nav li.cur{
+				background: #8A2BE2;
+			}
+			.box .con{
+				
+			}
+			.box .con li{
+				height: 300px;
+				width: 500px;
+				background: #8A2BE2;
+				display: none;
+			}
+			.box .con li:nth-child(1){
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul class="nav">
+				<li class="cur">圣旗</li>
+				<li>圣旗</li>
+				<li>圣旗</li>
+				<li>圣旗</li>
+				<li>圣旗</li>
+			</ul>
+			<ul class="con">
+				<li>11111111111</li>
+				<li>22222222222</li>
+				<li>33333333333</li>
+				<li>44444444444</li>
+				<li>55555555555</li>
+			</ul>
+		</div>
+	<script src="node_modules/jquery/dist/jquery.js"></script>
+		<script type="text/javascript">
+			$(".box .nav li").click(function(){
+//				console.log($(this).index())
+				var index=$(this).index();
+				$(this).addClass("cur").siblings().removeClass("cur");
+				$(".box .con li").hide()
+				.eq(index).show()
+			})
+		</script>
+	</body>
+</html>

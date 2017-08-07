@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				background: #00A0E9;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="append"/>
+		<input type="button" value="appendTo"/>
+		<input type="button" value="prepend"/>
+		<input type="button" value="prependTo"/>
+		<input type="button" value="after"/>
+		<input type="button" value="before"/>
+		<input type="button" value="insertAfter" />
+		<input type="button" value="insertBefore" />
+		
+		<div class="box">
+			
+		</div>
+	</body>
+	<script src="node_modules/jquery/dist/jquery.js"></script>
+	<script type="text/javascript">
+		$("input").eq(0).click(function(){//在box里面的后面添加子元素
+			$(".box").append("<h1>神自不凡，我信仰自己</h1>"+"<p>无论卑贱与高贵，我将拔剑而战！</p>");
+		})
+		$("input").eq(1).click(function(){//在box里面的后面添加子元素
+			$("<h1>神自不凡，我信仰自己</h1>"+"<p>无论卑贱与高贵，我将拔剑而战！</p>").appendTo(".box");
+		})
+		$("input").eq(2).click(function(){//在box里面的前面添加子元素
+			$(".box").prepend("<h1>神自不凡，我信仰自己</h1>"+"<p>无论卑贱与高贵，我将拔剑而战！</p>");
+		})
+		$("input").eq(3).click(function(){//在box里面的前面添加子元素
+			$("<h1>神自不凡，我信仰自己</h1>"+"<p>无论卑贱与高贵，我将拔剑而战！</p>").prependTo(".box");
+		})
+		$("input").eq(4).click(function(){//在box后面添加兄弟元素
+			$(".box").after("<h1>神自不凡，我信仰自己</h1>"+"<p>无论卑贱与高贵，我将拔剑而战！</p>");
+		})
+		$("input").eq(5).click(function(){//在box前面添加兄弟元素
+			$(".box").before("<h1>神自不凡，我信仰自己</h1>"+"<p>无论卑贱与高贵，我将拔剑而战！</p>");
+		})
+		$("input").eq(6).click(function(){//在box后面添加兄弟元素
+			$("<h1>神自不凡，我信仰自己</h1>"+"<p>无论卑贱与高贵，我将拔剑而战！</p>").insertAfter(".box");
+		})
+		$("input").eq(7).click(function(){//在box前面添加兄弟元素
+			$("<h1>神自不凡，我信仰自己</h1>"+"<p>无论卑贱与高贵，我将拔剑而战！</p>").insertBefore(".box");
+		})
+	</script>
+</html>
